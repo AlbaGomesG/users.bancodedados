@@ -1,3 +1,4 @@
+const pool = require("../config/database");
 const postModel = require("../models/postModel");
 
 const getAllPosts = async (req, res) => {
@@ -21,4 +22,14 @@ const getPostById = async (req, res) => {
     }
 };
 
-module.exports = { getAllPosts, getPostById };
+const createPost = async (req, res) => {
+    try {
+        const { user_id, content, image, localization } = req.body;
+        const newPost = await postModel.createPost(user_id, content, image, localization);
+        res.status(200).json({ message: "Post criado com sucesso!", newPost});
+    } catch (error) {
+        res.status(500).json({ message: "Erro ao criar Post!"});
+    }
+};
+
+module.exports = { getAllPosts, getPostById, createPost };

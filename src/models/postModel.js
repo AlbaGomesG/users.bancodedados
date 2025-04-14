@@ -10,4 +10,9 @@ const getPostById = async (id) => {
     return result.rows[0];
 };
 
-module.exports = { getPosts, getPostById }
+const createPost = async (user_id, content, image, localization) => {
+    const result = await pool.query("INSERT INTO posts (user_id, content, image, localization) VALUES ($1, $2, $3, $4) RETURNING *", [user_id, content, image, localization]);
+    return result.rows[0];
+};
+
+module.exports = { getPosts, getPostById, createPost };
