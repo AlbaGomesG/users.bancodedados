@@ -39,10 +39,19 @@ const updatePost = async (req, res) => {
         if (!updatePost) {
             return res.status(404).json({ message: "Post não encontrado!" });
         }
-        res.status(200).json({ message: "Post atualizado com sucesso!", updatePost})
+        res.status(200).json({ message: "Post atualizado com sucesso!", updatePost});
     } catch (error) {
-        res.status(500).json({ message: "Erro ao atualizar Post!"})
+        res.status(500).json({ message: "Erro ao atualizar Post!"});
     }
 };
 
-module.exports = { getAllPosts, getPostById, createPost, updatePost };
+const deletePost = async (req, res) => {
+    try {
+        const deletePost = await postModel.deletePost(req.params.id);
+        res.status(200).json({ message: "Post deletado com sucesso!", deletePost});
+    } catch (error) {
+        res.status(404).json({ message: "Post não encontrado!"});
+    }
+};
+
+module.exports = { getAllPosts, getPostById, createPost, updatePost, deletePost };

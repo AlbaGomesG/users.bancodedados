@@ -20,4 +20,12 @@ const updatePost = async (id, content, image) => {
     return result.rows[0];
 };
 
-module.exports = { getPosts, getPostById, createPost, updatePost };
+const deletePost = async (id) => {
+    const result = await pool.query("DELETE FROM posts WHERE id = $1 RETURING *", [id]);
+    if (result.rowCount === 0) {
+        throw new Error("Post não encontrado!");
+    }
+    return result.rows[0];
+};
+
+module.exports = { getPosts, getPostById, createPost, updatePost, deletePost };
