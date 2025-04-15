@@ -32,4 +32,17 @@ const createPost = async (req, res) => {
     }
 };
 
-module.exports = { getAllPosts, getPostById, createPost };
+const updatePost = async (req, res) => {
+    try {
+        const { content, image } = req.body;
+        const updatePost = await postModel.updatePost(req.params.id, content, image);
+        if (!updatePost) {
+            return res.status(404).json({ message: "Post não encontrado!" });
+        }
+        res.status(200).json({ message: "Post atualizado com sucesso!", updatePost})
+    } catch (error) {
+        res.status(500).json({ message: "Erro ao atualizar Post!"})
+    }
+};
+
+module.exports = { getAllPosts, getPostById, createPost, updatePost };

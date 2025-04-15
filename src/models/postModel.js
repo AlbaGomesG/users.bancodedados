@@ -15,4 +15,9 @@ const createPost = async (user_id, content, image, localization) => {
     return result.rows[0];
 };
 
-module.exports = { getPosts, getPostById, createPost };
+const updatePost = async (id, content, image) => {
+    const result = await pool.query("UPDATE posts SET content = $1, image = $2 WHERE id = $3 RETURNING *", [id, content, image]);
+    return result.rows[0];
+};
+
+module.exports = { getPosts, getPostById, createPost, updatePost };
