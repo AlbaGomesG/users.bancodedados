@@ -32,3 +32,5 @@ INSERT INTO users (name, email) VALUES
     (2, 'Grêmio reclama de possível pênalti na derrota para o Flamengo', 'https://lncimg.lance.com.br/cdn-cgi/image/width=950,quality=75,fit=pad,format=webp/uploads/2025/04/Reclamacao-penalti-Gremio-x-Flamengo-scaled-aspect-ratio-512-320.jpg', 'Porto Alegre - RS'),
     (2, 'Matos volta a ser o nº 1 do Brasil nas duplas e fica perto de maior marca', 'https://tenisbrasil.uol.com.br/wp-content/uploads/2025/04/matos-rio-open-sozinho-2025-1024x683.jpg', 'Londres - Ingleterra'),
     (1, 'Ações da Vivara sobem 8% após lucro de R$ 299 mi no 4º tri, alta de 91,9%', 'https://classic.exame.com/wp-content/uploads/2024/03/VIVARA.jpg?ims=750x/filters:quality(85):format(webp)', 'Brasil')
+
+    ALTER TABLE wizards ADD COLUMN photo TEXT;
