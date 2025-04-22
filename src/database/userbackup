@@ -1,0 +1,261 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 17.4
+-- Dumped by pg_dump version 17.4
+
+-- Started on 2025-04-22 11:34:51
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 220 (class 1259 OID 32859)
+-- Name: posts; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.posts (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    content character varying(250) NOT NULL,
+    image character varying(250) NOT NULL,
+    localization character varying(200)
+);
+
+
+ALTER TABLE public.posts OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 32858)
+-- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.posts_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.posts_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 4910 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.posts_id_seq OWNED BY public.posts.id;
+
+
+--
+-- TOC entry 218 (class 1259 OID 32850)
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    name character varying(100) NOT NULL,
+    email character varying(100) NOT NULL,
+    photo text
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1259 OID 32849)
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 4911 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- TOC entry 4748 (class 2604 OID 32862)
+-- Name: posts id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts ALTER COLUMN id SET DEFAULT nextval('public.posts_id_seq'::regclass);
+
+
+--
+-- TOC entry 4747 (class 2604 OID 32853)
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- TOC entry 4904 (class 0 OID 32859)
+-- Dependencies: 220
+-- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.posts (id, user_id, content, image, localization) FROM stdin;
+1	1	Volˆi Renata perde o primeiro jogo da s‚rie melhor de trˆs eliminat¢ria contra o Joinville	https://img.band.com.br/image/2025/04/07/e-a-primeira-derrota-do-volei-renata-apos-cinco-jogos-disputados-em-um-periodo-de-um-mes-e-meio-162517_400x300.webp	Gin sio do Taquaral, Campinas-SP
+2	2	Explorando as belezas desse lugar maravilhoso!	https://www.submarinoviagens.com.br/bora-nessa-trip/wp-content/uploads/2019/11/fernando-de-noronha.jpg	Fernando de Noronha, Brasil
+3	3	Esse hamb£rguer merece um prˆmio! ????	https://s2-receitas.glbimg.com/uZoXHzIDFTxAJI3hKEB33W_tJ8A=/0x0:1600x1200/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2022/k/4/TBIY6SQPeZy45CEDjE0w/hamburguer-artesanal-receita.jpg	Campinas-SP
+4	3	Goddes Core ‚ a tendˆncia de maquiagem mais elegante de 2025	https://www.uai.com.br/uainoticias/wp-content/uploads/2025/04/Goddes-Core_resized-1140x570.jpg	Espanha
+5	2	Grˆmio reclama de poss¡vel pˆnalti na derrota para o Flamengo	https://lncimg.lance.com.br/cdn-cgi/image/width=950,quality=75,fit=pad,format=webp/uploads/2025/04/Reclamacao-penalti-Gremio-x-Flamengo-scaled-aspect-ratio-512-320.jpg	Porto Alegre - RS
+6	2	Matos volta a ser o n§ 1 do Brasil nas duplas e fica perto de maior marca	https://tenisbrasil.uol.com.br/wp-content/uploads/2025/04/matos-rio-open-sozinho-2025-1024x683.jpg	Londres - Ingleterra
+7	1	A‡äes da Vivara sobem 8% ap¢s lucro de R$ 299 mi no 4§ tri, alta de 91,9%	https://classic.exame.com/wp-content/uploads/2024/03/VIVARA.jpg?ims=750x/filters:quality(85):format(webp)	Brasil
+10	1	Bauru enfrenta Minas ao vivo hoje na Superliga Feminina de Vôlei	https://maisvip.com.br/wp-content/uploads/2025/02/bauru-enfrenta-minas-ao-vivo-hoje-na-superliga-feminina-de-volei.jpg	Minas Gerais
+15	1	Bauru enfrenta Minas ao vivo hoje na Superliga Feminina de Vôlei	https://maisvip.com.br/wp-content/uploads/2025/02/bauru-enfrenta-minas-ao-vivo-hoje-na-superliga-feminina-de-volei.jpg	Minas Gerais
+\.
+
+
+--
+-- TOC entry 4902 (class 0 OID 32850)
+-- Dependencies: 218
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, name, email, photo) FROM stdin;
+1	Giovanna Alba	giovannaalba@email.com	\N
+3	Eduardo Correia	eduardo@email.com	\N
+6	Laura	laura@gmail.com.br	1744908723821-5b83ef1714b05105823f8f97711489c9.jpg
+2	Ana Carolina	anaCarolina@gmail.com	\N
+7	Ana Souza	ana.souza@email.com	\N
+8	Bruno Lima	bruno.lima@email.com	\N
+9	Carla Mendes	carla.mendes@email.com	\N
+10	Daniel Torres	daniel.torres@email.com	\N
+11	Elisa Martins	elisa.martins@email.com	\N
+12	Felipe Rocha	felipe.rocha@email.com	\N
+13	Gabriela Alves	gabriela.alves@email.com	\N
+14	Henrique Duarte	henrique.duarte@email.com	\N
+15	Isabela Ferreira	isabela.ferreira@email.com	\N
+16	JoÆo Pires	joao.pires@email.com	\N
+17	Karina Silva	karina.silva@email.com	\N
+18	Lucas Andrade	lucas.andrade@email.com	\N
+19	Mariana Costa	mariana.costa@email.com	\N
+20	Nicolas Barros	nicolas.barros@email.com	\N
+21	Olivia Ramos	olivia.ramos@email.com	\N
+22	Pedro Nunes	pedro.nunes@email.com	\N
+23	Quezia Prado	quezia.prado@email.com	\N
+24	Rafael Cunha	rafael.cunha@email.com	\N
+25	Sabrina Lopes	sabrina.lopes@email.com	\N
+26	Thiago Moreira	thiago.moreira@email.com	\N
+27	érsula Campos	ursula.campos@email.com	\N
+28	Vin¡cius Monteiro	vinicius.monteiro@email.com	\N
+29	William Reis	william.reis@email.com	\N
+30	Yasmin Teixeira	yasmin.teixeira@email.com	\N
+31	Zeca Moura	zeca.moura@email.com	\N
+32	Amanda Brito	amanda.brito@email.com	\N
+33	Bernardo Silva	bernardo.silva@email.com	\N
+34	Camila Fontes	camila.fontes@email.com	\N
+35	Diego Sampaio	diego.sampaio@email.com	\N
+36	Eduarda Luz	eduarda.luz@email.com	\N
+37	Fernando Vieira	fernando.vieira@email.com	\N
+38	Giovana Peixoto	giovana.peixoto@email.com	\N
+39	Hugo Tavares	hugo.tavares@email.com	\N
+40	Ingrid Macedo	ingrid.macedo@email.com	\N
+41	Juliano Batista	juliano.batista@email.com	\N
+42	Kelly Cardoso	kelly.cardoso@email.com	\N
+43	Leonardo Braga	leonardo.braga@email.com	\N
+44	Manuela Borges	manuela.borges@email.com	\N
+45	Nathan Ferreira	nathan.ferreira@email.com	\N
+46	Patr¡cia Azevedo	patricia.azevedo@email.com	\N
+47	Rodrigo Assis	rodrigo.assis@email.com	\N
+48	Sofia Martins	sofia.martins@email.com	\N
+49	Tiago Barcellos	tiago.barcellos@email.com	\N
+50	Vanessa Paiva	vanessa.paiva@email.com	\N
+51	Wesley Guedes	wesley.guedes@email.com	\N
+52	Yago Santana	yago.santana@email.com	\N
+\.
+
+
+--
+-- TOC entry 4912 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.posts_id_seq', 15, true);
+
+
+--
+-- TOC entry 4913 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 52, true);
+
+
+--
+-- TOC entry 4754 (class 2606 OID 32866)
+-- Name: posts posts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts
+    ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4750 (class 2606 OID 32857)
+-- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_email_key UNIQUE (email);
+
+
+--
+-- TOC entry 4752 (class 2606 OID 32855)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4755 (class 2606 OID 32867)
+-- Name: posts posts_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts
+    ADD CONSTRAINT posts_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE SET NULL;
+
+
+-- Completed on 2025-04-22 11:34:53
+
+--
+-- PostgreSQL database dump complete
+--
+
